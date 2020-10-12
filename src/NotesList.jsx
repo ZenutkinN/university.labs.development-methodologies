@@ -5,8 +5,10 @@ export const NotesList = () => {
   const [notes, setNote] = useState([]);
 
   const addNote = () => {
-    setNote((notes) => [...notes, text]);
-    setText('');
+    if (text !== '') {
+      setNote((notes) => [...notes, text]);
+      setText('');
+    }
   };
 
   const renderNotes = useCallback(() => {
