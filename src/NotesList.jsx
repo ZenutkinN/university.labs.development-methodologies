@@ -5,15 +5,27 @@ export const NotesList = () => {
   const [notes, setNote] = useState([]);
 
   const addNote = () => {
-    setNote((notes) => [...notes, text]);
-    setText('');
+    if (text !== '') {
+      setNote((notes) => [...notes, text]);
+    }
+  };
+
+  const deleteNote = (idx) => {
+    setNote((notes) => [...notes.slice(0, idx), ...notes.slice(idx + 1)]);
   };
 
   const renderNotes = useCallback(() => {
     if (notes.length === 0) {
       return 'Please, add note';
     } else {
-      return notes.map((title, idx) => <li key={idx}>{title}</li>);
+      return notes.map((title, idx) => {
+        return (
+          <li key={idx}>
+            {title}
+            <button onClick={() => deleteNote(idx)}>Delete</button>
+          </li>
+        );
+      });
     }
   }, [notes]);
 
