@@ -7,6 +7,7 @@ export const NotesList = () => {
   const addNote = () => {
     if (text !== '') {
       setNote((notes) => [...notes, text]);
+      setText('');
     }
   };
 
