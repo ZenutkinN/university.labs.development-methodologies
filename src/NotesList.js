@@ -22,7 +22,7 @@ export const NotesList = () => {
       return notes.map((title, idx) => {
         return (
           <li key={idx}>
-            {title}
+            <span className='text'>{title}</span>
             <button onClick={() => deleteNote(idx)}>Delete</button>
           </li>
         );
@@ -37,7 +37,9 @@ export const NotesList = () => {
         value={text}
         onChange={(event) => setText(event.target.value)}
       />
-      <button onClick={addNote}>Add note</button>
+      <button className='add' onClick={addNote}>
+        Add note
+      </button>
       <ul>{renderNotes()}</ul>
     </div>
   );
